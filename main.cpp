@@ -9,7 +9,8 @@ int main()
 
    int size;
    int** matrix;
-   Create_Matrix_f(namefile, &size, &matrix);
+   if (!Create_Matrix_f(namefile, &size, matrix))
+      return 1;
 
    if (Is_magic_square(matrix, size))
       cout << "This is magic square" << endl;
