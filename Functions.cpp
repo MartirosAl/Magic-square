@@ -4,7 +4,7 @@
 using namespace std;
 
 
-int Create_Matrix_f(const char* namefile_, int* size_, int*** matrix_)
+int Create_Matrix_f(const char* namefile_, int* size_, int**& matrix_)
 {
    FILE* file = fopen(namefile_, "r");
    if (!file)
