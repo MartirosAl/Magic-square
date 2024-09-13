@@ -1,5 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
+﻿#include <iostream>
 #include "Functions.h"
 using namespace std;
 
@@ -8,8 +7,8 @@ int main()
    const char* namefile = "test.txt";
 
    int size;
-   int** matrix;
-   if (!Create_Matrix_f(namefile, &size, matrix))
+   int** matrix = nullptr;
+   if (Create_Matrix_f(namefile, size, matrix))
       return 1;
 
    if (Is_magic_square(matrix, size))

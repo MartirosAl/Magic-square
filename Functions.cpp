@@ -4,7 +4,7 @@
 using namespace std;
 
 
-int Create_Matrix_f(const char* namefile_, int* size_, int**& matrix_)
+int Create_Matrix_f(const char* namefile_, int& size_, int**& matrix_)
 {
    FILE* file = fopen(namefile_, "r");
    if (!file)
@@ -12,17 +12,17 @@ int Create_Matrix_f(const char* namefile_, int* size_, int**& matrix_)
       cerr << -1;
       return -1;
    }
-   fscanf_s(file, "%d", size_);
-   (*matrix_) = new int* [*size_];
-   for (int i = 0; i < *size_; ++i)
+   fscanf_s(file, "%d", &size_);
+   matrix_ = new int* [size_];
+   for (int i = 0; i < size_; ++i)
    {
-      (*matrix_)[i] = new int[*size_];
+      matrix_[i] = new int[size_];
    }
-   for (int i = 0; i < *size_; ++i)
+   for (int i = 0; i < size_; ++i)
    {
-      for (int j = 0; j < *size_; ++j)
+      for (int j = 0; j < size_; ++j)
       {
-         fscanf_s(file, "%d", &(*matrix_)[i][j]);
+         fscanf_s(file, "%d", &matrix_[i][j]);
       }
    }
 
@@ -102,14 +102,14 @@ bool The_same_numbers(int** matrix_, int size_)
       temp = matrix_[i][j];
       for (int v = i; v < size_; v++)
       {
-         for (int w = j+1; w < size_; w++)
+         for (int w = j + 1; w < size_; w++)
          {
             if (temp == matrix_[v][w]) { return true; }
          }
       }
       j++;
       if (j == size_) { j = 0; i++; }
-      
+
    }
    return false;
 }

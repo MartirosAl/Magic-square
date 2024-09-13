@@ -1,6 +1,6 @@
 #pragma once
 
-int Create_Matrix_f(const char* namefile_, int* size_, int*** matrix_);
+int Create_Matrix_f(const char* namefile_, int& size_, int**& matrix_);
 
 bool Is_magic_square(int** matrix_, int size_);
 
